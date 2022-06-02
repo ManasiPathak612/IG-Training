@@ -11,7 +11,7 @@ abstract class beverage {
 		    System.out.println("Beverage is Tea");
 		  }
 	}
-	class abstraction{
+	class Abstraction{
 		public static void main(String[] args) {
 			Tea t = new Tea();
 			t.type();
