@@ -1,13 +1,12 @@
-package com.oops.inheritance
-;
+package com.oops.inheritance;
 
-public class Inheritance { 
+public class SingleInheritance { 
 	float salary = 60000;
 }
-class employee extends  Inheritance{
+class Manager extends  SingleInheritance{
 	int bonus = 50000;
 	public static void main(String args[]) {
-		employee e = new employee();
+		Manager e = new Manager();
 		System.out.println(e.salary);
 		System.out.println(e.bonus);
 	}
