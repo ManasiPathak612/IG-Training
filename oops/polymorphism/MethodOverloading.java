@@ -18,7 +18,7 @@ class Overload {
     System.out.println("Hi myself " + fname + " " + lname);
   }
 }
-public class Main {
+public class MethodOverloading {
   public static void main(String[] args) {
     Parent obj1;
     obj1 = new Parent();

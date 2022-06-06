@@ -1,10 +1,10 @@
 package com.oops.inheritance
 ;
 
-public class Person { 
+public class Inheritance { 
 	float salary = 60000;
 }
-class employee extends  Person{
+class employee extends  Inheritance{
 	int bonus = 50000;
 	public static void main(String args[]) {
 		employee e = new employee();

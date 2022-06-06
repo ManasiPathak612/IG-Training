@@ -10,7 +10,7 @@ interface Bus
 	int distance=50;
 	public void speed();
 }
-public class Vehicle implements Car,Bus
+public class MultipleInheritance implements Car,Bus
 {
 	int totalDistance;
 	int avgSpeed;
@@ -26,7 +26,7 @@ public class Vehicle implements Car,Bus
 }
 public static void main(String args[])
 {
-	Vehicle v=new Vehicle();
+	MultipleInheritance v=new MultipleInheritance();
 	v.totalDistance();
 	v.speed();
 }
