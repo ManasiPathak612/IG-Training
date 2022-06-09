@@ -1,4 +1,4 @@
-package com.java.lambdaExpressions;
+package com.lambdaExpressions;
 
 interface Addition{  
     int add(int a,int b);  
