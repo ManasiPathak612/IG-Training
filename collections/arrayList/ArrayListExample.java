@@ -5,16 +5,31 @@ import java.util.Collections;
 import java.util.List;
 
 public class ArrayListExample {
-	public static void main(String args[]){  
-		  List<String> list1=new ArrayList<String>();  
-		  list1.add("Mango");  
-		  list1.add("Apple");  
-		  list1.add("Banana");  
-		  list1.add("Grapes");  
-		  System.out.println("Returning element: "+list1.get(2));
-		  list1.set(2,"Papaya");  
-		  Collections.sort(list1);  
-		  for(String fruit:list1)  
-		    System.out.println(fruit);  
+	public static void main(String args[]) {
+		List<String> topCompanies = new ArrayList<>();
+
+	    System.out.println("Is the topCompanies list empty? : " + topCompanies.isEmpty());
+	
+	    topCompanies.add("Google");
+	    topCompanies.add("Apple");
+	    topCompanies.add("Microsoft");
+	    topCompanies.add("Amazon");
+	    topCompanies.add("Facebook");
+	
+
+	    System.out.println("List of companies: " + topCompanies.size());
+	    System.out.println(topCompanies);
+	
+
+	    String bestCompany = topCompanies.get(0);
+	    String secondBestCompany = topCompanies.get(1);
+	    String lastCompany = topCompanies.get(topCompanies.size() - 1);
+	
+	    System.out.println("First Company: " + bestCompany);
+	    System.out.println("Second Company: " + secondBestCompany);
+	    System.out.println("Last Company in the list: " + lastCompany);
+
+	    topCompanies.set(4, "Walmart");
+	    System.out.println("Modified top companies list: " + topCompanies);
 	}
 }
