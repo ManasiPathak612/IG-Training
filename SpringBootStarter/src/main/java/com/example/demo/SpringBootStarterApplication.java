@@ -12,9 +12,8 @@ public class SpringBootStarterApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootStarterApplication.class, args);
 	}
-	 @RequestMapping(value = "/")
+	@RequestMapping(value = "/")
 	   public String hello() {
-	      return "Hello World!!";
+	      return "Hello Spring Boot App!!";
 	   }
-
 }
