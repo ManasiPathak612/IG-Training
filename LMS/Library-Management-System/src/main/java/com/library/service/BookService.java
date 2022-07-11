@@ -4,15 +4,23 @@ import java.util.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.library.model.Book;
+import com.library.model.User;
 import com.library.repository.BookRepository;
+import com.library.repository.UserRepository;
 
 @Service
 public class BookService {
 	@Autowired
 	BookRepository booksRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+
 	
 	public List<Book> getAllBooks()   
 	{  
@@ -20,8 +28,11 @@ public class BookService {
 		booksRepository.findAll().forEach(books1 -> books.add(books1));  
 		return books;
 	}  
-	public void save(Book books)   
+	public void saveBook(Book books,Long id)   
 	{  
+		User user = userRepository.findById(id).get();
+		books.setCreatedBy(user);
+		books.setModifiedBy(user);
 		booksRepository.save(books);  
 	}
 	public Book editBook(Book book) {
@@ -31,8 +42,24 @@ public class BookService {
 		book1.setBookPrice(book.getBookPrice());
 		book1.setBookPublication(book.getBookPublication());
 		book1.setNoOfCopies(book.getNoOfCopies());
+		book1.setNoOfCopies(book.getNumberOfPages());
 		return booksRepository.save(book1);
 	}  
+	
+	public List<Book> findAllBooks() {
+		return booksRepository.findAll();
+	}
+	public ResponseEntity<List<Book>> searchByName(String name){
+		return new ResponseEntity<List<Book>>(booksRepository.findByBookName(name),HttpStatus.OK);
+	}
+	public ResponseEntity<List<Book>> searchByAuthor(String name){
+		return new ResponseEntity<List<Book>>(booksRepository.findByBookAuthor(name),HttpStatus.OK);
+	}
+	public ResponseEntity<List<Book>> searchByPublication(String name){
+		return new ResponseEntity<List<Book>>(booksRepository.findByBookPublication(name),HttpStatus.OK);
+	}
+	
+	
 	
 }
 

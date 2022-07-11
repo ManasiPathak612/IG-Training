@@ -15,7 +15,7 @@ import com.library.repository.UserRepository;
 public class UserService {
 	@Autowired
 	UserRepository userRepository;
-	
+
 	public List<User> getAllUsers()   
 	{  
 		List<User> users = new ArrayList<User>();  
@@ -25,5 +25,15 @@ public class UserService {
 	public User addUser(User users)   
 	{  
 		return userRepository.save(users);  
+	}
+	public User editUser(User user) {
+		User user1 = userRepository.findById(user.getUserId()).orElse(null);
+		user1.setUserName(user.getUserName());
+		user1.setUserAddress(user.getUserAddress());
+		user1.setUserMailId(user.getUserMailId());
+		user1.setUserType(user.getUserType());
+		user1.setUserAge(user.getUserAge());
+		user1.setGender(user.getGender());
+		return userRepository.save(user1);
 	}  
 }

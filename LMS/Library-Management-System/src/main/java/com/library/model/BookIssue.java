@@ -3,13 +3,11 @@ package com.library.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,16 +24,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name="book_issued_transaction")
-public class BookIssuedTransaction {
+@Table(name="book_issue_table")
+public class BookIssue {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long transactionId;
 	
 	private String transactionStatus;
 	
 	private String remarks;
 	
+
 	@JsonFormat(pattern = "dd/mm/yyyy")
 	private Date bookIssueDate;
 	
@@ -51,25 +50,25 @@ public class BookIssuedTransaction {
 	@JsonFormat(pattern = "dd/mm/yyyy")
 	private Date modifiedOn;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "bookId", referencedColumnName = "bookId")
 	private Book book;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "issuedTo", referencedColumnName = "userId")
-	private User userId;
+	private User issuedTo;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "issuedBy",referencedColumnName = "userId")
-	private User userType;
+	private User issuedBy;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "createdBy",referencedColumnName = "userId")
 	private User createdBy;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "modifiedBy", referencedColumnName = "userId")
 	private User modifiedBy;
-	}
 
+}

@@ -30,18 +30,20 @@ import lombok.ToString;
 @Table(name ="book_table")
 public class Book {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long bookId;
 	private String bookName;
 	private String bookAuthor;
 	private String bookPublication;
 	private int numberOfPages;
-	private float bookPrice;
+	private double bookPrice;
 	private int noOfCopies;
 
 	
+	
 	@JsonFormat(pattern = "dd/mm/yyyy")
 	private Date createdOn;
+	
 	
 	@JsonFormat(pattern = "dd/mm/yyyy")
 	private Date modifiedOn;
@@ -52,6 +54,5 @@ public class Book {
 	
 	@ManyToOne
 	@JoinColumn(name = "modifiedBy", referencedColumnName = "userId")
-	private User modifiedBy;
-	
+	private User modifiedBy;	
 } 
