@@ -38,6 +38,7 @@ public class Book {
 	private int numberOfPages;
 	private double bookPrice;
 	private int noOfCopies;
+	private int activeFlag;
 
 	
 	

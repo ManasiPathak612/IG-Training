@@ -1,11 +1,7 @@
 package com.library.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-
 import java.util.List;
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,7 +41,6 @@ public class UserServiceTest {
     }
 	@Test
     public void givenUserList_whenGetAllUsers_thenReturnUserList(){
-
         given(userRepository.findAll()).willReturn(List.of(user,user));
         List<User> UserList = userService.getAllUsers();
         assertThat(UserList).isNotNull();

@@ -58,8 +58,17 @@ public class BookService {
 	public ResponseEntity<List<Book>> searchByPublication(String name){
 		return new ResponseEntity<List<Book>>(booksRepository.findByBookPublication(name),HttpStatus.OK);
 	}
-	
-	
+	public Book deleteBook(String name, Long id) {
+		List<Book> existingBook = booksRepository.findByBookName(name);
+		User user = userRepository.findById(id).get();
+		existingBook.get(0).setActiveFlag(0);
+		existingBook.get(0).setNoOfCopies(0);
+		existingBook.get(0).setModifiedBy(user);
+		return booksRepository.save(existingBook.get(0));
+	}
+	public Book saveBook(Book book) {
+		return booksRepository.save(book);
+	}
 	
 }
 
