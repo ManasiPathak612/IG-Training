@@ -18,13 +18,11 @@ public class UserService {
 
 	public List<User> getAllUsers()   
 	{  
-		List<User> users = new ArrayList<User>();  
-		userRepository.findAll().forEach(user1 -> users.add(user1));  
-		return users;
+		return userRepository.findAll(); 
 	}  
-	public User addUser(User users)   
+	public User addUser(User user)   
 	{  
-		return userRepository.save(users);  
+		return userRepository.save(user);  
 	}
 	public User editUser(User user) {
 		User user1 = userRepository.findById(user.getUserId()).orElse(null);
@@ -36,4 +34,7 @@ public class UserService {
 		user1.setGender(user.getGender());
 		return userRepository.save(user1);
 	}  
+	public User getUserById(Long id) {
+		return userRepository.findByUserId(id);
+	}
 }

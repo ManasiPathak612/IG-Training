@@ -2,6 +2,8 @@ package com.library.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,9 @@ public class BookIssueController {
 	@Autowired
 	BookIssueService bookIssueService;
 	
+
+	private static final Logger log = LoggerFactory.getLogger(BookIssueController.class);
+	
 	@GetMapping("/getBookTransactions")
 	public List<BookIssue> getBookTransaction() {
 		return (List<BookIssue>) bookIssueService.getAllTransactions();
@@ -28,6 +33,23 @@ public class BookIssueController {
 			@PathVariable Long bookId) {
 		return bookIssueService.createBookIssue(bookIssue, bookId, userId, libId);
 	}
-	
+	@GetMapping("/getTransactionByTransactionId/{id}")
+	public BookIssue getTransactionByTransactionId(@PathVariable Long id) {
+		log.info("Book issued controller called for fetching tranaction by transaction id.");
+		return bookIssueService.findTransactionByTransactionId(id);
+	}
+
+	@GetMapping("/getTransactionByStatus/{name}")
+	public List<BookIssue> getTransactionByStatus(@PathVariable String name) {
+		log.info("Book issued controller called for fetching transaction by status.");
+		return bookIssueService.findTransactionByStatus(name);
+	}
+
+	@PutMapping("/updateTransaction")
+	public BookIssue updateProduct(@RequestBody BookIssue book) {
+		log.info("Book issued controller called for updating transaction ");
+		return bookIssueService.updateTransaction(book);
+
+	}
 }
 
