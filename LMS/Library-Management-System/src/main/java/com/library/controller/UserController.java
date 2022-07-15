@@ -33,7 +33,7 @@ public class UserController {
 
 	
 	@PostMapping("/addUser")
-	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(code=HttpStatus.CREATED)
 	public User saveUser(@RequestBody User user) {
 		return userService.addUser(user);
 	}

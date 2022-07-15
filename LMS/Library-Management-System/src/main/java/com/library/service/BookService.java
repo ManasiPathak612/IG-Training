@@ -49,8 +49,8 @@ public class BookService {
 	public List<Book> findAllBooks() {
 		return booksRepository.findAll();
 	}
-	public ResponseEntity<List<Book>> searchByName(String name){
-		return new ResponseEntity<List<Book>>(booksRepository.findByBookName(name),HttpStatus.OK);
+	public List<Book> searchByName(String name){
+		return booksRepository.findByBookName(name);
 	}
 	public ResponseEntity<List<Book>> searchByAuthor(String name){
 		return new ResponseEntity<List<Book>>(booksRepository.findByBookAuthor(name),HttpStatus.OK);
@@ -69,6 +69,10 @@ public class BookService {
 	public Book saveBook(Book book) {
 		return booksRepository.save(book);
 	}
+	public Book saveBookInfo(Book book) {
+		return booksRepository.save(book);
+	}
+	
 	
 }
 
